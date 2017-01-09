@@ -1,0 +1,57 @@
+apply plugin: 'java'
+apply plugin: 'idea'
+apply plugin: 'application'
+
+repositories {
+    mavenCentral()
+    maven{ url "https://maven.atlassian.com/3rdparty/" }
+}
+
+dependencies {
+    testCompile "org.seleniumhq.selenium:selenium-java:2.53.0"
+    testCompile "org.testng:testng:6.9.10"
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+    testCompile group: 'io.appium', name: 'java-client', version: '4.1.2'
+    testCompile group: 'javax.mail', name: 'mail', version: '1.5.0-b01'
+    testCompile group: 'org.testng', name: 'testng', version: '6.9.10'
+    testCompile group: 'postgresql', name: 'postgresql', version: '9.4.1208-jdbc42-atlassian-hosted'
+
+}
+
+tasks.withType(Test) {
+    useTestNG {
+        useDefaultListeners =  true
+    }
+
+    sourceSets {
+        test {
+            java {
+                srcDirs = ['src']
+            }
+        }
+    }
+
+    options {
+        outputDirectory = file('test-report')
+        // listeners << 'org.uncommons.reportng.JUnitXMLReporter'
+    }
+
+    testLogging.showStandardStreams = true
+    //systemProperties System.getProperties()
+    systemProperty "org.uncommons.reportng.escape-output", "false"
+    systemProperty "org.uncommons.reportng.title", "Test Report"
+    ignoreFailures = true
+}
+
+task runXMLSuiteFile(type: Test) {
+    options.suites("xmlSuites/testSuite.xml")
+    ignoreFailures = false
+}
+
+task startHub(type:Exec){
+    commandLine 'java', '-jar', 'selenium-server-standalone-3.0.0-beta3.jar', '-role', 'hub', '-hubConfig', 'hub.json'
+}
+
+task startNode(type:Exec){
+    commandLine 'java', '-jar', 'selenium-server-standalone-3.0.0-beta3.jar', '-role', 'node', '-hub', 'http://localhost:4444/grid/register', '-nodeConfig', 'node.json'
+}

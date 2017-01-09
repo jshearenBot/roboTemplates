@@ -1,0 +1,77 @@
+/debug.log
+/TestNgAutomationSuites/testingScripts
+/qa-automation-test-suites.ipr
+/test
+### Example user template template
+### Example user template
+
+# IntelliJ project files
+.idea
+*.iml
+out
+gen### Eclipse template
+*.pydevproject
+.metadata
+.gradle
+bin/
+/settings.gradle
+tmp/
+*.tmp
+/qa-automation-test-suites.iws
+*.bak
+*.swp
+/build
+/lib
+*~.nib
+local.properties
+.settings/
+.loadpath
+
+# Eclipse Core
+.project
+
+# External tool builders
+.externalToolBuilders/
+
+# Locally stored "Eclipse launch configurations"
+*.launch
+
+# CDT-specific
+.cproject
+
+# JDT-specific (Eclipse Java Development Tools)
+.classpath
+
+# Java annotation processor (APT)
+.factorypath
+
+# PDT-specific
+.buildpath
+
+# sbteclipse plugin
+.target
+
+# TeXlipse plugin
+.texlipse
+### Java template
+*.class
+
+
+# Mobile Tools for Java (J2ME)
+.mtj.tmp/
+
+/AutomationUtilities/localProperties/LocationPath.java
+# Package Files #
+*.war
+*.ear
+
+# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
+hs_err_pid*
+
+# Created by .ignore support plugin (hsz.mobi)
+
+#Addtional exclusions
+/AutomationUtilities/localProperties/LocalLocationPath.java
+/test-output
+/TestNgAutomationSuites/localScripts/SandBox.java
+/test-report/
