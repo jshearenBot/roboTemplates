@@ -75,3 +75,4 @@ hs_err_pid*
 /test-output
 /TestNgAutomationSuites/localScripts/SandBox.java
 /test-report/
+/gradlew.bat
